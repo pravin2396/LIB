@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Menu,
   Bell,
-  Search,
+  Library,
   LogOut,
   User as UserIcon,
 } from 'lucide-react';
@@ -41,8 +41,8 @@ const Navbar = ({ onOpenSidebar }) => {
 
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-6 h-18 flex items-center justify-between transition-all">
-      {/* Left side: Hamburger toggle */}
-      <div className="flex items-center gap-3 sm:gap-4 flex-1">
+      {/* Left side: Hamburger toggle + BookStack Logo & Branding */}
+      <div className="flex items-center gap-3">
         <button
           onClick={onOpenSidebar}
           className="lg:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors"
@@ -51,13 +51,19 @@ const Navbar = ({ onOpenSidebar }) => {
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="relative max-w-md w-full hidden sm:block">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Search library portal resources..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-100 hover:bg-slate-50 focus:bg-white border border-transparent focus:border-indigo-500 rounded-xl text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
-          />
+        {/* BookStack Brand & Logo in Header */}
+        <div className="flex items-center gap-2.5 select-none">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-sm shadow-indigo-500/20">
+            <Library className="w-5 h-5" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-slate-900 text-base tracking-tight leading-tight">
+              Book<span className="text-indigo-600">Stack</span>
+            </span>
+            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+              LMS Portal
+            </span>
+          </div>
         </div>
       </div>
 

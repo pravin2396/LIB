@@ -2,7 +2,6 @@
 
 const USERS_KEY = 'bookstack_lib_users';
 const CURRENT_USER_KEY = 'bookstack_lib_current_user';
-const BORROWED_KEY = 'bookstack_lib_borrowed_books';
 
 export const DEFAULT_USERS = [
   {
@@ -73,37 +72,6 @@ export const initializeStorage = () => {
     if (!existingUsers) {
       localStorage.setItem(USERS_KEY, JSON.stringify(DEFAULT_USERS));
     }
-
-    const existingBorrowed = localStorage.getItem(BORROWED_KEY);
-    if (!existingBorrowed) {
-      const defaultBorrowed = [
-        {
-          id: 'loan_1',
-          userId: 'usr_std_1',
-          userEmail: 'student@library.com',
-          bookKey: '/works/OL45804W',
-          title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
-          author: 'Robert C. Martin',
-          coverId: 8231856,
-          borrowDate: '2026-09-28',
-          dueDate: '2026-10-18',
-          status: 'Active',
-        },
-        {
-          id: 'loan_2',
-          userId: 'usr_std_1',
-          userEmail: 'student@library.com',
-          bookKey: '/works/OL82586W',
-          title: 'The Great Gatsby',
-          author: 'F. Scott Fitzgerald',
-          coverId: 7452478,
-          borrowDate: '2026-09-15',
-          dueDate: '2026-10-05',
-          status: 'Overdue',
-        },
-      ];
-      localStorage.setItem(BORROWED_KEY, JSON.stringify(defaultBorrowed));
-    }
   } catch (error) {
     console.error('Error initializing BookStack storage:', error);
   }
@@ -115,7 +83,6 @@ cleanLegacyStorage();
 export const storageService = {
   USERS_KEY,
   CURRENT_USER_KEY,
-  BORROWED_KEY,
   cleanLegacyStorage,
 
   getUsers: () => {
@@ -192,43 +159,6 @@ export const storageService = {
       localStorage.removeItem(CURRENT_USER_KEY);
     } catch (e) {
       console.error('Failed to clear current user', e);
-    }
-  },
-
-  getBorrowedBooks: (userId) => {
-    try {
-      const data = localStorage.getItem(BORROWED_KEY);
-      const all = data ? JSON.parse(data) : [];
-      if (!userId) return all;
-      return all.filter((b) => b.userId === userId || b.userEmail === userId);
-    } catch {
-      return [];
-    }
-  },
-
-  borrowBook: (record) => {
-    try {
-      const data = localStorage.getItem(BORROWED_KEY);
-      const all = data ? JSON.parse(data) : [];
-      const updated = [record, ...all];
-      localStorage.setItem(BORROWED_KEY, JSON.stringify(updated));
-      return updated;
-    } catch (e) {
-      console.error('Failed to borrow book', e);
-      return [];
-    }
-  },
-
-  returnBook: (loanId) => {
-    try {
-      const data = localStorage.getItem(BORROWED_KEY);
-      const all = data ? JSON.parse(data) : [];
-      const updated = all.filter((item) => item.id !== loanId);
-      localStorage.setItem(BORROWED_KEY, JSON.stringify(updated));
-      return updated;
-    } catch (e) {
-      console.error('Failed to return book', e);
-      return [];
     }
   },
 };
