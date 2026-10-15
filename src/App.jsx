@@ -13,6 +13,8 @@ import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import BooksPage from './pages/books/BooksPage';
 import BookDetailsPage from './pages/books/BookDetailsPage';
+import MembersPage from './pages/members/MembersPage';
+import MemberProfilePage from './pages/members/MemberProfilePage';
 import ProfilePage from './pages/profile/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -39,6 +41,8 @@ function App() {
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="books" element={<BooksPage />} />
           <Route path="books/:id" element={<BookDetailsPage />} />
+          <Route path="members" element={<MembersPage />} />
+          <Route path="members/:id" element={<MemberProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

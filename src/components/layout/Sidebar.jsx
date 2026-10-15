@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   BookOpen,
+  Users,
   User,
   LogOut,
   Library,
@@ -30,6 +31,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/books',
       label: 'Book Management',
       icon: BookOpen,
+      badge: null,
+    },
+    {
+      to: '/members',
+      label: 'Member Management',
+      icon: Users,
       badge: null,
     },
     {
