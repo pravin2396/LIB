@@ -1,18 +1,17 @@
 import axios from 'axios';
 
-// Create configured Axios instance
+// Create configured Axios instance for Third-Party API (DummyJSON)
 const api = axios.create({
-  baseURL: 'https://openlibrary.org',
-  timeout: 12000,
+  baseURL: 'https://dummyjson.com',
+  timeout: 6000,
   headers: {
     'Accept': 'application/json',
   },
 });
 
-// Request interceptor for logging or authorization simulation
+// Request interceptor
 api.interceptors.request.use(
   (config) => {
-    // In real apps, token can be appended here
     return config;
   },
   (error) => {
@@ -24,7 +23,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.error('API Error:', error?.response?.status || error?.message);
+    console.warn('Third-Party API Warning:', error?.response?.status || error?.message);
     return Promise.reject(error);
   }
 );

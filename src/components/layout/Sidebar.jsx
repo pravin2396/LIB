@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
+  BookOpen,
   User,
   LogOut,
   Library,
@@ -23,6 +24,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/dashboard',
       label: 'Dashboard',
       icon: LayoutDashboard,
+      badge: null,
+    },
+    {
+      to: '/books',
+      label: 'Book Management',
+      icon: BookOpen,
       badge: null,
     },
     {
