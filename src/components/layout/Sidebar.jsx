@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   BookOpen,
   Users,
+  ArrowRightLeft,
   User,
   LogOut,
   Library,
@@ -37,6 +38,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/members',
       label: 'Member Management',
       icon: Users,
+      badge: null,
+    },
+    {
+      to: '/circulation',
+      label: 'Issue / Return',
+      icon: ArrowRightLeft,
       badge: null,
     },
     {

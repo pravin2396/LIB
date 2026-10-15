@@ -63,8 +63,9 @@ export const cleanLegacyStorage = () => {
 
 import { SEED_BOOKS, BOOKS_STORAGE_KEY } from './bookService';
 import { SEED_MEMBERS, MEMBERS_STORAGE_KEY } from './memberService';
+import { SEED_ISSUES, ISSUES_STORAGE_KEY } from './issueService';
 
-// Initialize users, book catalog, and members in LocalStorage and remove non-bookstack project data
+// Initialize users, book catalog, members, and issues in LocalStorage and remove non-bookstack project data
 export const initializeStorage = () => {
   try {
     // 1. Remove all previous project data from localStorage (keeps only bookstack_ keys)
@@ -84,6 +85,11 @@ export const initializeStorage = () => {
     const existingMembers = localStorage.getItem(MEMBERS_STORAGE_KEY);
     if (!existingMembers) {
       localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(SEED_MEMBERS));
+    }
+
+    const existingIssues = localStorage.getItem(ISSUES_STORAGE_KEY);
+    if (!existingIssues) {
+      localStorage.setItem(ISSUES_STORAGE_KEY, JSON.stringify(SEED_ISSUES));
     }
   } catch (error) {
     console.error('Error initializing BookStack storage:', error);
