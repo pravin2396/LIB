@@ -7,6 +7,7 @@ import {
   Users,
   ArrowRightLeft,
   DollarSign,
+  BarChart3,
   User,
   LogOut,
   Library,
@@ -58,6 +59,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/fines',
       label: 'Fine Management',
       icon: DollarSign,
+      badge: null,
+    },
+    {
+      to: '/reports',
+      label: 'Reports & Analytics',
+      icon: BarChart3,
       badge: null,
     },
     {
