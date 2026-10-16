@@ -16,6 +16,7 @@ import BookDetailsPage from './pages/books/BookDetailsPage';
 import MembersPage from './pages/members/MembersPage';
 import MemberProfilePage from './pages/members/MemberProfilePage';
 import IssueReturnPage from './pages/circulation/IssueReturnPage';
+import FineManagementPage from './pages/fines/FineManagementPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="members" element={<MembersPage />} />
           <Route path="members/:id" element={<MemberProfilePage />} />
           <Route path="circulation" element={<IssueReturnPage />} />
+          <Route path="fines" element={<FineManagementPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

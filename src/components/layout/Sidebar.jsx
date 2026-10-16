@@ -5,6 +5,7 @@ import {
   BookOpen,
   Users,
   ArrowRightLeft,
+  DollarSign,
   User,
   LogOut,
   Library,
@@ -44,6 +45,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/circulation',
       label: 'Issue / Return',
       icon: ArrowRightLeft,
+      badge: null,
+    },
+    {
+      to: '/fines',
+      label: 'Fine Management',
+      icon: DollarSign,
       badge: null,
     },
     {
