@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import Badge from '../common/Badge';
+import GlobalSearchBar from '../common/GlobalSearchBar';
 
 const Navbar = ({ onOpenSidebar }) => {
   const { user, logout } = useAuth();
@@ -65,6 +66,11 @@ const Navbar = ({ onOpenSidebar }) => {
             </span>
           </div>
         </div>
+      </div>
+
+      {/* Center: Global Search Bar */}
+      <div className="hidden md:flex flex-1 max-w-lg mx-4">
+        <GlobalSearchBar />
       </div>
 
       {/* Right side: Notifications + User profile */}

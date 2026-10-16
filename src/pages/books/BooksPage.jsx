@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { bookService } from '../../services/bookService';
+import { categoryService } from '../../services/categoryService';
 import Card from '../../components/common/Card';
 import Badge from '../../components/common/Badge';
 import Button from '../../components/common/Button';
@@ -166,7 +167,11 @@ const BooksPage = () => {
   }, [searchQuery, selectedCategory, selectedAuthor, sortBy]);
 
   // Unique Categories and Authors
-  const categories = useMemo(() => bookService.getCategories(books), [books]);
+  const categories = useMemo(() => {
+    const fromBooks = bookService.getCategories(books);
+    const fromService = categoryService.getStoredCategories().map((c) => c.name);
+    return Array.from(new Set([...fromBooks, ...fromService])).sort();
+  }, [books]);
   const authors = useMemo(() => bookService.getAuthors(books), [books]);
 
   // Handlers for Add

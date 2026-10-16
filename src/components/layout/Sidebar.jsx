@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   BookOpen,
+  Layers,
   Users,
   ArrowRightLeft,
   DollarSign,
@@ -33,6 +34,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       to: '/books',
       label: 'Book Management',
       icon: BookOpen,
+      badge: null,
+    },
+    {
+      to: '/categories',
+      label: 'Search & Categories',
+      icon: Layers,
       badge: null,
     },
     {
